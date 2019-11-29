@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "workspaces": ["api", "customer-ui"],
+  "scripts": {
+    "start:db": "docker-compose run --service-port -d database",
+    "start:server": "yarn workspace api start"
+  }
+}
