@@ -37,6 +37,8 @@ defmodule Dsaur.MixProject do
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
+      {:absinthe, "~> 1.4.0"},
+      {:absinthe_plug, "~> 1.4"},
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
