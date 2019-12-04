@@ -5,9 +5,13 @@ defmodule DsaurWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", DsaurWeb do
+  scope "/api" do
     pipe_through :api
-    
-    resources "/users", UserController, except: [:new, :edit]
+
+    forward("/graphql", Absinthe.Plug, schema: DsaurWeb.Schema)
+
+    if Mix.env() == :dev do
+      forward("/graphiql", Absinthe.Plug.GraphiQL, schema: DsaurWeb.Schema)
+    end
   end
 end
