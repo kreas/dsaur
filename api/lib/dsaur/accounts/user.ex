@@ -2,6 +2,8 @@ defmodule Dsaur.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Dsaur.Accounts.Credential
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "users" do
@@ -11,6 +13,8 @@ defmodule Dsaur.Accounts.User do
     field :phone_number, :string
 
     timestamps()
+
+    has_one :credential, Credential
   end
 
   @doc false
@@ -18,5 +22,6 @@ defmodule Dsaur.Accounts.User do
     user
     |> cast(attrs, [:first_name, :last_name, :email, :phone_number])
     |> validate_required([:first_name, :last_name, :email, :phone_number])
+    |> unique_constraint(:email)
   end
 end
