@@ -1,4 +1,5 @@
 defmodule DsaurWeb.Resolvers.UserResolver do
+  import Dsaur.Helpers.GraphQLHelper
   alias Dsaur.Accounts
 
   def users(_, _, _) do
@@ -6,6 +7,8 @@ defmodule DsaurWeb.Resolvers.UserResolver do
   end
 
   def create_user(_, %{input: input}, _) do
-    Accounts.create_user(input)
+    input
+    |> Accounts.create_user()
+    |> format_mutation_response
   end
 end
