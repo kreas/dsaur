@@ -4,4 +4,5 @@ defmodule DsaurWeb.Schema.Types do
   alias DsaurWeb.Schema.Types
 
   import_types(Types.UserType)
+  import_types(Types.CredentialType)
 end
